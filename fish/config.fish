@@ -1,4 +1,3 @@
-## Set values
 ## Run fastfetch as welcome message
 function fish_greeting
     fastfetch
@@ -78,7 +77,7 @@ alias la='eza -a --color=always --group-directories-first --icons'  # all files 
 alias ll='eza -l --color=always --group-directories-first --icons'  # long format
 alias lt='eza -aT --color=always --group-directories-first --icons' # tree listing
 alias l.="eza -a | grep -e '^\.'"                                     # show only dotfiles
-
+alias yayf="yay -Slq | fzf --multi --preview 'yay -Sii {1}' --preview-window=down:75% | xargs -ro yay -S"
 # Common use
 alias grubup="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias fixpacman="sudo rm /var/lib/pacman/db.lck"
@@ -100,10 +99,9 @@ alias egrep='egrep --color=auto'
 alias hw='hwinfo --short'                                   # Hardware Info
 alias big="expac -H M '%m\t%n' | sort -h | nl"              # Sort installed packages according to size in MB
 alias gitpkg='pacman -Q | grep -i "\-git" | wc -l'          # List amount of -git packages
-alias update='sudo cachyos-rate-mirrors && sudo pacman -Syu'
-
-# Get fastest mirrors
-alias mirror="sudo cachyos-rate-mirrors"
+alias update='sudo pacman -Syu && yay && flatpak update'
+alias p="ps aux | grep "
+alias pacman='sudo pacman'
 
 # Help people new to Arch
 alias apt='man pacman'
@@ -119,5 +117,5 @@ alias jctl="journalctl -p 3 -xb"
 # Recent installed packages
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 
-# Starts starship
+# Startup starfish prompt
 starship init fish | source
