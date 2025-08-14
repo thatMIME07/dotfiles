@@ -1,6 +1,6 @@
 ## Run fastfetch as welcome message
 function fish_greeting
-    fastfetch
+    fastfetch --config ~/.config/fastfetch/minimal.jsonc
 end
 
 # Format man pages
